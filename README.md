@@ -1,7 +1,7 @@
 # MLproject
-Using:
-1. Python
-2. TensorFlow
-3. Quandl
-4. Pandas
-5. Sklearn
+Using:<br>
+1. Python<br>
+2. TensorFlow<br>
+3. Quandl<br>
+4. Pandas<br>
+5. Sklearn<br>
