@@ -3,8 +3,7 @@ import quandl, math, datetime
 import numpy as np
 from sklearn import preprocessing, model_selection, svm
 from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt 
-from matplotlib import style
+import pickle
 
 #loading dataframe
 df = quandl.get("YAHOO/GOOGL")
@@ -36,13 +35,20 @@ X_lately = X[-forecast_out:]
 
 df.dropna(inplace=True)
 y = np.array(df['label'])
-y = np.array(df['label'])
+
 
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2)
 
 #Defining Classifier
-clf = LinearRegression()
-clf.fit(X_train, y_train)
+# clf = LinearRegression()
+# clf.fit(X_train, y_train)
+
+# with open('linearregression.pickle', 'wb') as f:
+# 	pickle.dump(clf,f)
+
+pickle_in = open('linearregression.pickle', 'rb')
+clf = pickle.load(pickle_in)
+
 accuracy = clf.score(X_test, y_test)
 
 forecast_set = clf.predict(X_lately);
